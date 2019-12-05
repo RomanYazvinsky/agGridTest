@@ -4,7 +4,7 @@ import {Component, OnDestroy} from '@angular/core';
 @Component({
   selector: 'app-checkbox-cell',
   template: `
-      <div (click)="onSelectionChange(!checked)"
+      <div (click)="onSelectionChange($event)"
            [classList]="'ag-icon ' + (checked ? 'ag-icon-checkbox-checked':'ag-icon-checkbox-unchecked')">
       </div>
   `
@@ -19,9 +19,10 @@ export class CheckboxCellComponent implements ICellRendererAngularComp, OnDestro
     this.node.addEventListener('rowSelected', this.selectionChangedListener);
   }
 
-  onSelectionChange(value: boolean) {
-    this.checked = value;
-    this.node.setSelected(value);
+  onSelectionChange(event: MouseEvent) {
+    event.stopPropagation();
+    this.checked = !this.checked;
+    this.node.setSelected(this.checked);
   }
 
   refresh(params: any): boolean {
