@@ -3,6 +3,7 @@ import {AllModules} from '@ag-grid-enterprise/all-modules/dist/es6/main';
 import {Component, Input} from '@angular/core';
 import {SearchResultTableRow} from '../../models/search-result-table-row.model';
 import {CheckboxHeaderComponent} from './headers/checkbox/checkbox.header.component';
+import {CheckboxCellComponent} from './renderers/checkbox-cell/checkbox-cell.component';
 import {DateCellRendererComponent} from './renderers/date-cell/date-cell.renderer.component';
 import {ImageCellRendererComponent} from './renderers/image-cell/image-cell.renderer.component';
 import {LinkCellRendererComponent} from './renderers/link-cell/link-cell.renderer.component';
@@ -68,8 +69,9 @@ export class TableComponent {
     imageCell: ImageCellRendererComponent,
     linkCell: LinkCellRendererComponent,
     dateCell: DateCellRendererComponent,
+    checkboxCell: CheckboxCellComponent,
     selectionToggleToolbarButton: ButtonToolbarComponent,
-    checkboxHeader: CheckboxHeaderComponent
+    checkboxHeader: CheckboxHeaderComponent,
   };
 
 
@@ -77,7 +79,7 @@ export class TableComponent {
     headerComponent: 'checkboxHeader',
     suppressMenu: true,
     field: 'checked',
-    checkboxSelection: true,
+    cellRenderer: 'checkboxCell',
     hide: true,
     width: 42
   },
