@@ -43,7 +43,7 @@ export class CheckboxHeaderComponent implements IHeaderAngularComp, OnDestroy {
     const selectedRowsCount = this.api.getSelectedRows().length;
     let rowsCount = 0;
     this.api.forEachNode(() => rowsCount++);
-    this.checked = rowsCount === selectedRowsCount;
+    this.checked = rowsCount === selectedRowsCount && selectedRowsCount > 0;
   }
 
   ngOnDestroy(): void {
